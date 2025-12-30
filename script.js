@@ -1,70 +1,41 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #000;
-        }
+// おみくじ画像リスト（3〜12.png）
+const omikujiPics = [
+  "3.png", "4.png", "5.png", "6.png", "7.png",
+  "8.png", "9.png", "10.png", "11.png", "12.png"
+];
 
-        /* フェードイン用のスタイル */
-        #card-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            cursor: pointer;
+let isOmikuji = false;
+const img = document.getElementById("card-image");
 
-            opacity: 0; /* 初期は透明 */
-            transition: opacity 5s ease-in; /* 5秒でフェードイン */
-        }
+/* フェード付きで画像を切り替える */
+function changeImageWithFade(src) {
+  // 初期化（キャッシュ対策）
+  img.classList.remove("visible");
+  img.style.opacity = "0";
 
-        /* 表示したときに opacity を 1 にするクラス */
-        .visible {
-            opacity: 1;
-        }
-    </style>
-</head>
-<body>
+  // 読み込み完了後にフェードイン
+  img.onload = () => {
+    requestAnimationFrame(() => {
+      img.classList.add("visible");
+    });
+  };
 
-    <img id="card-image" src="" alt="おみくじ画像">
+  img.src = src;
+}
 
-    <script>
-        const cards = [
-            { name: "omikuji", imageUrl: "21.png" },
-            { name: "omikuji", imageUrl: "22.png" },
-            { name: "omikuji", imageUrl: "23.png" },
-            { name: "omikuji", imageUrl: "24.png" },
-            { name: "omikuji", imageUrl: "25.png" },
-            { name: "omikuji", imageUrl: "26.png" },
-            { name: "omikuji", imageUrl: "27.png" },
-            { name: "omikuji", imageUrl: "28.png" },
-            { name: "omikuji", imageUrl: "29.png" },
-            { name: "omikuji", imageUrl: "30.png" }
-        ];
+/* 初期表示もフェードさせる */
+window.addEventListener("load", () => {
+  changeImageWithFade("2.png");
+});
 
-        window.onload = function() {
-            const randomIndex = Math.floor(Math.random() * cards.length);
-            const selectedCard = cards[randomIndex];
-
-            const img = document.getElementById('card-image');
-
-            // 画像の src をセット
-            img.src = selectedCard.imageUrl;
-
-            // 読み込み完了後に visible クラスを付けて5秒フェードイン
-            img.onload = function() {
-                img.classList.add("visible");
-            };
-        };
-    </script>
-
-</body>
-</html>
+/* クリック処理 */
+img.addEventListener("click", () => {
+  if (!isOmikuji) {
+    const idx = Math.floor(Math.random() * omikujiPics.length);
+    changeImageWithFade(omikujiPics[idx]);
+    isOmikuji = true;
+  } else {
+    changeImageWithFade("2.png");
+    isOmikuji = false;
+  }
+});
