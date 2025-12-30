@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>おみくじ</title>
+</head>
+<body>
+
+<!-- タップ可能な画像 -->
+<img id="omikujiImg" src="2.png" width="300" style="cursor:pointer;">
+
+<script>
+  // おみくじ候補画像
+  const omikujiPics = [
+    "3.png","4.png","5.png","6.png","7.png",
+    "8.png","9.png","10.png","11.png","12.png"
+  ];
+
+  // 現在おみくじが出ている状態か（初期は false：2.png）
+  let isOmikuji = false;
+
+  document.getElementById("omikujiImg").onclick = function () {
+    // まだおみくじ出ていない → ランダムに出す
+    if (!isOmikuji) {
+      const randomIndex = Math.floor(Math.random() * omikujiPics.length);
+      this.src = omikujiPics[randomIndex];
+      isOmikuji = true;
+    } else {
+      // おみくじ中 → 元画像（2.png）に戻す
+      this.src = "2.png";
+      isOmikuji = false;
+    }
+  };
+</script>
+
+</body>
+</html>
