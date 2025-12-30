@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    /* 画面全体 */
     body, html {
       margin: 0;
       padding: 0;
@@ -16,29 +15,27 @@
       background-color: #000;
     }
 
-    /* 画像表示 */
     #card-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
       cursor: pointer;
 
-      /* フェードイン設定 */
       opacity: 0;
-      transition: opacity 5s ease-in;
+      animation: fadeIn 5s ease-in forwards;
     }
 
-    /* 表示状態 */
-    #card-image.visible {
-      opacity: 1;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
     }
   </style>
 </head>
 <body>
-
   <div id="card-container">
-    <img id="card-image" src="2.png" alt="おみくじトップ画像">
+    <img id="card-image" src="2.png" alt="omikuji">
   </div>
 
+  <script src="script.js"></script>
 </body>
 </html>
