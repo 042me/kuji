@@ -1,14 +1,14 @@
 const cards = [
-    { name: "daikichi", imageUrl: "img/daikichi.png" },
-    { name: "chukichi", imageUrl: "img/chukichi.png" },
-    { name: "chukichi", imageUrl: "img/chukichi.png" },
-    { name: "chukichi", imageUrl: "img/chukichi.png" },
-    { name: "chukichi", imageUrl: "img/chukichi.png" },
-    { name: "shokichi", imageUrl: "img/shokichi.png" },
-    { name: "shokichi", imageUrl: "img/shokichi.png" },
-    { name: "shokichi", imageUrl: "img/shokichi.png" },
-    { name: "shokichi", imageUrl: "img/shokichi.png" },
-    { name: "kyou", imageUrl: "img/kyou.png" },
+    { name: "mioshie", imageUrl: "3.png" },
+    { name: "mioshie", imageUrl: "4.png" },
+    { name: "mioshie", imageUrl: "5.png" },
+    { name: "mioshie", imageUrl: "6.png" },
+    { name: "mioshie", imageUrl: "7.png" },
+    { name: "mioshie", imageUrl: "8.png" },
+    { name: "mioshie", imageUrl: "9.png" },
+    { name: "mioshie", imageUrl: "10.png" },
+    { name: "mioshie", imageUrl: "11.png" },
+    { name: "mioshie", imageUrl: "12.png" },
     // その他のカードを追加
 ];
 
