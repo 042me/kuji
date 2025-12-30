@@ -1,20 +1,36 @@
-const cards = [
-  { name: "undameshi", imageUrl: "3.png" },
-  { name: "undameshi", imageUrl: "4.png" },
-  { name: "undameshi", imageUrl: "5.png" },
-  { name: "undameshi", imageUrl: "6.png" },
-  { name: "undameshi", imageUrl: "7.png" },
-  { name: "undameshi", imageUrl: "8.png" },
-  { name: "undameshi", imageUrl: "9.png" },
-  { name: "undameshi", imageUrl: "10.png" },
-  { name: "undameshi", imageUrl: "11.png" },
-  { name: "undameshi", imageUrl: "12.png" }
+const randomPics = [
+  "3.png", "4.png", "5.png", "6.png", "7.png",
+  "8.png", "9.png", "10.png", "11.png", "12.png"
 ];
 
-window.onload = function() {
-  const randomIndex = Math.floor(Math.random() * cards.length);
-  const selectedCard = cards[randomIndex];
+let showingRandom = false; // false: 2.png表示中 / true: ランダム表示中
 
-  // カード画像を表示
-  document.getElementById('card-image').src = selectedCard.imageUrl;
-};
+function rerunFadeAnimation(img) {
+  img.style.animation = "none";
+  void img.offsetWidth; // reflow
+  img.style.animation = "";
+}
+
+function setImageWithFade(img, src) {
+  rerunFadeAnimation(img);
+  img.src = src;
+}
+
+window.addEventListener("load", () => {
+  const img = document.getElementById("card-image");
+  if (!img) return;
+
+  // 初期表示(2.png)もフェードさせる（不要ならこの1行を消してOK）
+  setImageWithFade(img, "2.png");
+
+  img.addEventListener("click", () => {
+    if (!showingRandom) {
+      const idx = Math.floor(Math.random() * randomPics.length);
+      setImageWithFade(img, randomPics[idx]);
+      showingRandom = true;
+    } else {
+      setImageWithFade(img, "2.png");
+      showingRandom = false;
+    }
+  });
+});
