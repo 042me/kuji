@@ -1,21 +1,69 @@
-const cards = [
-    { name: "mioshie", imageUrl: "3.png" },
-    { name: "mioshie", imageUrl: "4.png" },
-    { name: "mioshie", imageUrl: "5.png" },
-    { name: "mioshie", imageUrl: "6.png" },
-    { name: "mioshie", imageUrl: "7.png" },
-    { name: "mioshie", imageUrl: "8.png" },
-    { name: "mioshie", imageUrl: "9.png" },
-    { name: "mioshie", imageUrl: "10.png" },
-    { name: "mioshie", imageUrl: "11.png" },
-    { name: "mioshie", imageUrl: "12.png" },
-    // その他のカードを追加
-];
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
 
-window.onload = function() {
-    const randomIndex = Math.floor(Math.random() * cards.length);
-    const selectedCard = cards[randomIndex];
+        /* フェードイン用のスタイル */
+        #card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            opacity: 0; /* 初期は透明 */
+            transition: opacity 1s ease-in; /* 1秒でフェード */
+        }
 
-    // カード画像を表示
-    document.getElementById('card-image').src = selectedCard.imageUrl;
-};
+        /* 画像が読み込まれたらこのクラスを付けて opacity を 1 にする */
+        .visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <img id="card-image" src="" alt="おみくじ画像">
+
+    <script>
+        const cards = [
+            { name: "omikuji", imageUrl: "21.png" },
+            { name: "omikuji", imageUrl: "22.png" },
+            { name: "omikuji", imageUrl: "23.png" },
+            { name: "omikuji", imageUrl: "24.png" },
+            { name: "omikuji", imageUrl: "25.png" },
+            { name: "omikuji", imageUrl: "26.png" },
+            { name: "omikuji", imageUrl: "27.png" },
+            { name: "omikuji", imageUrl: "28.png" },
+            { name: "omikuji", imageUrl: "29.png" },
+            { name: "omikuji", imageUrl: "30.png" }
+        ];
+
+        window.onload = function() {
+            const randomIndex = Math.floor(Math.random() * cards.length);
+            const selectedCard = cards[randomIndex];
+
+            const img = document.getElementById('card-image');
+
+            // src をセット
+            img.src = selectedCard.imageUrl;
+
+            // 読み込み完了後に visible クラスを追加してフェードイン
+            img.onload = function() {
+                img.classList.add("visible");
+            };
+        };
+    </script>
+
+</body>
+</html>
