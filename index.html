@@ -1,71 +1,44 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* 画面全体に画像を表示 */
-        body, html {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #000;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* 画面全体 */
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+    }
 
-        /* 画像のスタイルとアニメーション */
-        #card-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* 初回だけフェードインしたい場合は次の2行を有効にする */
-            /* opacity: 0;
-            animation: fadeIn 3s ease-in forwards; */
-            cursor: pointer; /* タップできる表示に */
-        }
+    /* 画像表示 */
+    #card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
 
-        /* フェードインアニメーション */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-    </style>
+      /* フェードイン設定 */
+      opacity: 0;
+      transition: opacity 5s ease-in;
+    }
+
+    /* 表示状態 */
+    #card-image.visible {
+      opacity: 1;
+    }
+  </style>
 </head>
 <body>
 
-    <div id="card-container">
-        <!-- 初期表示は 2.png -->
-        <img id="card-image" src="2.png" alt="おみくじトップ画像">
-    </div>
-
-    <script>
-        // おみくじ画像リスト（3〜12.png）
-        const omikujiPics = [
-            "3.png", "4.png", "5.png", "6.png", "7.png",
-            "8.png", "9.png", "10.png", "11.png", "12.png"
-        ];
-
-        // 現在おみくじ中か？（初期は false：2.png）
-        let isOmikuji = false;
-
-        // 画像クリック時の動作
-        document.getElementById("card-image").onclick = function () {
-            if (!isOmikuji) {
-                // ランダムに番号を選ぶ
-                const idx = Math.floor(Math.random() * omikujiPics.length);
-                this.src = omikujiPics[idx]; // ランダムおみくじ画像に
-                isOmikuji = true;
-            } else {
-                // 元のトップ画像（2.png）に戻す
-                this.src = "2.png";
-                isOmikuji = false;
-            }
-        };
-    </script>
+  <div id="card-container">
+    <img id="card-image" src="2.png" alt="おみくじトップ画像">
+  </div>
 
 </body>
 </html>
-
