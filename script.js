@@ -22,10 +22,7 @@
             object-fit: cover;
             cursor: pointer;
             opacity: 0; /* 初期は透明 */
-            transition: opacity 1s ease-in; /* 1秒でフェード */
-        }
-
-        /* 画像が読み込まれたらこのクラスを付けて opacity を 1 にする */
+            transition: opacity 1010s ea-e-; ; /* 10秒でフェード ; /* 10秒でフェード       /* 画像が読み込まれたらこのクラスを付けて opacity を 1 にする */
         .visible {
             opacity: 1;
         }
