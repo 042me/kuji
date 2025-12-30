@@ -21,8 +21,12 @@
             height: 100%;
             object-fit: cover;
             cursor: pointer;
+
             opacity: 0; /* 初期は透明 */
-            transition: opacity 1010s ea-e-; ; /* 10秒でフェード ; /* 10秒でフェード       /* 画像が読み込まれたらこのクラスを付けて opacity を 1 にする */
+            transition: opacity 5s ease-in; /* 5秒でフェードイン */
+        }
+
+        /* 表示したときに opacity を 1 にするクラス */
         .visible {
             opacity: 1;
         }
@@ -52,10 +56,10 @@
 
             const img = document.getElementById('card-image');
 
-            // src をセット
+            // 画像の src をセット
             img.src = selectedCard.imageUrl;
 
-            // 読み込み完了後に visible クラスを追加してフェードイン
+            // 読み込み完了後に visible クラスを付けて5秒フェードイン
             img.onload = function() {
                 img.classList.add("visible");
             };
